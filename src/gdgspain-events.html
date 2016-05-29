@@ -5,24 +5,97 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 -->
 
 <link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/src/gdgspain-events-item.html">
 <link rel="import" href="/src/gdgspain-shared-styles.html">
 
 <dom-module id="gdgspain-events">
-  <template>
+ <template>
     <style include="gdgspain-shared-styles">
       :host {
         display: block;
       }
+
+      .groups-list {
+        @apply(--layout-horizontal);
+        @apply(--layout-wrap);
+        @apply(--layout-justified);
+
+        padding: 0;
+
+        list-style: none;
+      }
+
+      .groups-list li {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .groups-list a {
+        display:block;
+
+        text-decoration: none;
+      }
+
+      @media (min-width: 425px) {
+        .groups-list li {
+          @apply(--layout-flex-auto);
+
+          max-width: 48%;
+          margin-bottom: 4%;
+
+          -webkit-flex-basis: 48%;
+          flex-basis: 48%;
+        }
+      }
+
+      @media (min-width: 625px) {
+        .groups-list li {
+          max-width: 100%;
+          margin-bottom: 2%;
+
+          -webkit-flex-basis: 100%;
+          flex-basis: 100%;
+        }
+      }
     </style>
+
+    <iron-ajax
+      auto
+      url="/data/events.json"
+      handle-as="json"
+      last-response="{{events}}"></iron-ajax>
 
     <h1>Eventos</h1>
 
-    Contenido de eventos aquí.
+    <div class="translate-animation">
+      <ul class="groups-list">
+        <template is="dom-repeat" items="[[events]]" as="events">
+          <li>
+            <gdgspain-events-item events="[[events]]"></gdgspain-events-item>
+          </li>
+        </template>
+      </ul>
+    </div>
   </template>
+
 
   <script>
     Polymer({
-      is: 'gdgspain-events'
+      is: 'gdgspain-events',
+      ready: function () {
+        
+        var dateToday =  Date.now(); 
+        var dateFuture = dateToday + 365 * 24 * 60 * 60 * 1000;
+        var eventUrl= 'https://developers.google.com/groups/country/Spain/feed/events/fc?start=' + dateToday + '&end=' + dateFuture;
+
+        // this.$.ajaxcall.send({url: eventUrl});
+        // this.$.ajaxcall.url(eventUrl);
+      }
     });
+
+     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
   </script>
 </dom-module>

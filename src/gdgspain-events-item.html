@@ -1,0 +1,79 @@
+<!--
+@license
+Copyright (c) 2016 The GDG Spain Authors. All rights reserved.
+This code may only be used under the MIT style license found at http://gdg.es/LICENSE.txt
+-->
+
+<link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/bower_components/paper-card/paper-card.html">
+<link rel="import" href="/bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="/bower_components/moment-element/moment-element.html">
+<link rel="import" href="/bower_components/iron-icon/iron-icon.html">
+
+<link rel="import" href="/src/gdgspain-icons.html">
+
+<dom-module id="gdgspain-events-item">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      paper-card {
+        width: 100%;
+        background: #FFC20B;
+      }
+      .card-content{
+        background: #FFF;
+      }
+      .time {
+        padding-left: 6px;
+      }
+      .date-icon{
+        color: #E0655B;
+      }
+      .event-icon {
+         color: #16A05D;
+      }
+      .social-networks {
+        position: relative;
+        float: right;
+        color: #4E8DF5;
+      }
+
+    </style>
+
+    <paper-card heading="[[events.title]]">
+      
+      <div class="card-content" >  
+            <a href="https://developers.google.com[[events.url]]" target="_blank" tabindex="-1"><paper-icon-button class="date-icon" icon="gdgspain-icons:event"></paper-icon-button></a>
+            <span><moment-element class= "time" datetime="[[events.start]]" output-format="DD/MM/YY" output="{{date}}">  </moment-element> </span>
+            <span> <moment-element class= "time" datetime="[[events.start]]" output-format=" HH:mm ">  </moment-element>h</span>
+
+            <div> 
+              <a href="https://www.google.com/maps/?q=[[events.location]]" target="_blank" tabindex="-1"><paper-icon-button class="event-icon" icon="gdgspain-icons:place"></paper-icon-button></a> 
+              <span class= "time">[[events.location]] </span>
+
+               <a href="https://twitter.com/intent/tweet?button_hashtag=gdgspainevent&text=[[events.title]] el {{date}} en [[events.location]]" class="social-networks" target="_blank"><paper-icon-button class="social-networks" icon="gdgspain-icons:twitter"></paper-icon-button></a>
+             
+            </div>
+      </div>
+
+    </paper-card>
+  </template>
+
+  <script>
+    Polymer({
+      is: 'gdgspain-events-item',
+
+      properties: {
+        events: {
+          type: Object
+        }
+      },
+      ready: function(){
+        // console.log(this.events)
+      }
+    });
+  </script>
+</dom-module>
