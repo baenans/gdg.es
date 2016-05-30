@@ -84,18 +84,18 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
   <script>
     Polymer({
       is: 'gdgspain-events',
-      ready: function () {
+      ready: function() {
         
-        var dateToday =  Date.now(); 
-        var dateFuture = dateToday + 365 * 24 * 60 * 60 * 1000;
-        var eventUrl= 'https://developers.google.com/groups/country/Spain/feed/events/fc?start=' + dateToday + '&end=' + dateFuture;
+        // var dateToday = Date.now(); 
+        // var dateFuture = dateToday + 365 * 24 * 60 * 60 * 1000;
+        // var eventUrl= 'https://developers.google.com/groups/country/Spain/feed/events/fc?start=' + dateToday + '&end=' + dateFuture;
 
         // this.$.ajaxcall.send({url: eventUrl});
         // this.$.ajaxcall.url(eventUrl);
       }
     });
 
-     !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+     !function(d, s, id) { var js, fjs=d.getElementsByTagName(s)[0], p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)) { js=d.createElement(s); js.id=id; js.src=p+'://platform.twitter.com/widgets.js'; fjs.parentNode.insertBefore(js, fjs); }}(document, 'script', 'twitter-wjs');
 
   </script>
 </dom-module>

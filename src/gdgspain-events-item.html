@@ -44,18 +44,18 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
     </style>
 
     <paper-card heading="[[events.title]]">
-      
-      <div class="card-content" >  
+
+      <div class="card-content" >
             <a href="https://developers.google.com[[events.url]]" target="_blank" tabindex="-1"><paper-icon-button class="date-icon" icon="gdgspain-icons:event"></paper-icon-button></a>
             <span><moment-element class= "time" datetime="[[events.start]]" output-format="DD/MM/YY" output="{{date}}">  </moment-element> </span>
             <span> <moment-element class= "time" datetime="[[events.start]]" output-format=" HH:mm ">  </moment-element>h</span>
 
-            <div> 
-              <a href="https://www.google.com/maps/?q=[[events.location]]" target="_blank" tabindex="-1"><paper-icon-button class="event-icon" icon="gdgspain-icons:place"></paper-icon-button></a> 
+            <div>
+              <a href="https://www.google.com/maps/?q=[[events.location]]" target="_blank" tabindex="-1"><paper-icon-button class="event-icon" icon="gdgspain-icons:place"></paper-icon-button></a>
               <span class= "time">[[events.location]] </span>
 
                <a href="https://twitter.com/intent/tweet?button_hashtag=gdgspainevent&text=[[events.title]] el {{date}} en [[events.location]]" class="social-networks" target="_blank"><paper-icon-button class="social-networks" icon="gdgspain-icons:twitter"></paper-icon-button></a>
-             
+
             </div>
       </div>
 
@@ -70,9 +70,6 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
         events: {
           type: Object
         }
-      },
-      ready: function(){
-        // console.log(this.events)
       }
     });
   </script>
