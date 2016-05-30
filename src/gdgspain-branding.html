@@ -5,24 +5,33 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 -->
 
 <link rel="import" href="/bower_components/polymer/polymer.html">
+<link rel="import" href="/src/gdgspain-animate-page.html">
 <link rel="import" href="/src/gdgspain-shared-styles.html">
 
 <dom-module id="gdgspain-branding">
   <template>
     <style include="gdgspain-shared-styles">
       :host {
+        @apply(--page-content);
+
         display: block;
       }
     </style>
 
     <h1>Branding</h1>
 
-    Contenido de branding aquí.
+    <div id="transformedContent">
+      Contenido de branding aquí.
+    </div>
   </template>
 
   <script>
     Polymer({
-      is: 'gdgspain-branding'
+      is: 'gdgspain-branding',
+
+      behaviors: [
+        Polymer.GDGSpainAnimatePage
+      ]
     });
   </script>
 </dom-module>
