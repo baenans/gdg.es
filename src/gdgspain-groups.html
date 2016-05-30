@@ -7,6 +7,8 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 <link rel="import" href="/bower_components/polymer/polymer.html">
 <link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="/bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="/bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="/bower_components/polymerfire/firebase-query.html">
 <link rel="import" href="/src/gdgspain-group-item.html">
 <link rel="import" href="/src/gdgspain-shared-styles.html">
 
@@ -65,11 +67,15 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
       }
     </style>
 
-    <iron-ajax
-      auto
-      url="/data/groups.json"
-      handle-as="json"
-      last-response="{{groups}}"></iron-ajax>
+    <firebase-app
+        auth-domain="gdg-es.firebaseapp.com"
+        database-url="https://gdg-es.firebaseio.com"
+        api-key="AIzaSyAIF5ALCsCSwKZhPqIIfwSOQPRrswB1Ovc"></firebase-app>
+
+    <firebase-query
+        path="/groups"
+        data="{{groups}}">
+    </firebase-query>
 
     <h1>Grupos</h1>
 
@@ -84,13 +90,7 @@ This code may only be used under the MIT style license found at http://gdg.es/LI
 
   <script>
     Polymer({
-      is: 'gdgspain-groups',
-
-      properties: {
-        groups: {
-          type: Array
-        }
-      }
+      is: 'gdgspain-groups'
     });
   </script>
 </dom-module>
